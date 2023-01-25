@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -31,14 +31,14 @@ namespace VendasAPI.Controllers
             return await _vendedorRepository.Get(id);
         }
 
-        [HttpPost]
+        [HttpPost("/AdicionarVendedor/")]
         public async Task<ActionResult<Vendedor>> PostVendedores([FromBody] Vendedor vendedor)
         {
             var novoVendedor = await _vendedorRepository.Create(vendedor);
             return CreatedAtAction(nameof(GetVendedores), new { id = novoVendedor.Id }, novoVendedor);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("/DeletarVendedor/{id}")]
         public async Task<ActionResult> DeleteVendedor(int id)
         {
             var vendedorToDelete = await _vendedorRepository.Get(id);
@@ -51,7 +51,7 @@ namespace VendasAPI.Controllers
 
         }
 
-        [HttpPut]
+        [HttpPut("/AtualizarVendedor/{id+}")]
         public async Task<ActionResult<Vendedor>> PutVendedores(int id, [FromBody] Vendedor vendedor)
         {
             if (id != vendedor.Id)
