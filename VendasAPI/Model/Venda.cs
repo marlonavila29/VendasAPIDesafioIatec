@@ -11,6 +11,7 @@ namespace VendasAPI.Model
         public String ItensVenda  { get; set; }
         public String Status { get; set; }
         public int DataVenda { get; set; }
+        public int IdVendedor { get; set; }
 
     }
 }
